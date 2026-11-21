@@ -1,0 +1,222 @@
+:root {
+  --color-primary: #324bff;
+  --color-text: #333333;
+  --color-placeholder: #999999;
+  --color-border: #cccccc;
+  --color-surface: #f7f7f7;
+  --color-white: #ffffff;
+  --gradient-bg: linear-gradient(135deg, #A1C4FD 0%, #C2E9FB 100%);
+
+  --font-family: "Montserrat", sans-serif;
+  --radius-card: 20px;
+  --radius-pill: 50px;
+  --shadow-card: 0px 5px 12px #0000001F;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background: var(--gradient-bg);
+}
+
+/* ---------- Card ---------- */
+.card {
+  height: 577px;
+  width: 900px;
+
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.cardTitle {
+  width: 800px;
+  height: 49px;
+  margin: 50px 50px 13px;
+
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0px;
+  color: var(--color-text);
+}
+
+.cardText {
+  width: 800px;
+  height: 74px;
+  margin: 0 50px 35px;
+
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0px;
+}
+
+/* ---------- List ---------- */
+.list {
+  height: 228px;
+  margin: 30px 50px;
+  padding: 10px;
+  overflow-y: auto;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.listItem {
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.listItem[aria-selected="true"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ---------- Actions ---------- */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 0 50px 50px;
+}
+
+.actionsGroup {
+  display: flex;
+  gap: 16px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  min-width: 128px;
+  height: 48px;
+  padding: 0 24px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.btnPrimary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btnOutline {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.btnIcon {
+  min-width: 80px;
+  display: inline-grid;
+  place-items: center;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------- Modal ---------- */
+.modal {
+  width: calc(100% - 48px);
+  max-width: 680px;
+  padding: 48px;
+  border: none;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.modalLabel {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.modalInput {
+  width: 100%;
+  height: 58px;
+  margin-bottom: 24px;
+  padding: 0 20px;
+  font-family: inherit;
+  font-size: 18px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.modalInput::placeholder {
+  color: var(--color-placeholder);
+}
+
+.modalInput:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -1px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .card,
+  .modal {
+    padding: 24px;
+  }
+
+  .cardTitle {
+    font-size: 28px;
+  }
+
+  .cardText {
+    font-size: 16px;
+  }
+
+  .btn {
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .btnIcon {
+    min-width: 64px;
+  }
+}
