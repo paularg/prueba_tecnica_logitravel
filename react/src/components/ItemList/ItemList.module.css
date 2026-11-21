@@ -1,0 +1,9 @@
+.list {
+  height: 228px;
+  margin: 0 0 32px;
+  padding: 10px;
+  overflow-y: auto;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
