@@ -1,75 +1,58 @@
-# React + TypeScript + Vite
+# Technical Proof · React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript version of the front-end technical test, built with [Vite](https://vite.dev).
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Then open the URL shown in the terminal (usually `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the development server         |
+| `npm run build`   | Type-check and build for production  |
+| `npm run preview` | Preview the production build         |
+| `npm run lint`    | Lint the project with ESLint         |
+| `npm run format`  | Format the source code with Prettier |
+
+## Features
+
+- Add items through a modal. Empty or whitespace-only text is not allowed.
+- Select one or more items and delete them with the **Delete** button.
+- Delete a single item with a double click.
+- Undo changes with the **Undo** button (multiple steps supported).
+- Keyboard support: items can be focused with `Tab` and toggled with `Enter` or `Space`. The modal closes with `Esc`.
+
+## Project structure
 
 ```
+src/
+├── App.tsx              # Owns the state and connects the components
+├── listReducer.ts       # State logic (add, toggle, delete, undo)
+├── types.ts             # Domain types: Item, State, Action
+├── index.css            # Design tokens and base styles
+└── components/
+    ├── AddItemModal/    # Modal with the form to add an item
+    ├── Button/          # Reusable button (primary / outline / icon)
+    ├── Header/          # Title and description
+    ├── ItemList/        # List container
+    ├── ListActions/     # Undo, Delete and Add buttons
+    ├── ListItem/        # Single selectable item
+    └── UndoIcon/        # SVG icon
+```
+
+## Technical decisions
+
+- **`useReducer` as the single source of truth.** All state changes go through a pure reducer, which keeps the logic in one place and makes it easy to test.
+- **Undo with snapshots.** Before every change to the list, the current items are saved in `history`, so any number of changes can be undone.
+- **Typed actions.** `Action` is a discriminated union, so TypeScript reports any action the reducer does not handle.
+- **Native `<dialog>`.** Provides the backdrop, focus management and `Esc` to close without extra libraries.
+- **Container / presentational components.** Only `App` knows about the reducer; the other components receive data and callbacks through props.
+- **CSS Modules.** Each component has its own scoped styles; global styles are limited to design tokens and base rules.
+- **Accessibility.** The list uses `role="listbox"` / `role="option"` with `aria-selected`, and the icon button has an `aria-label`.
