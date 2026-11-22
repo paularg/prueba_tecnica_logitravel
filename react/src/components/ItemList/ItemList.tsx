@@ -13,7 +13,7 @@ type ItemListProps = {
 
 const ItemList = ({ items, selected, onToggle, onDelete }: ItemListProps) => (
   <ul
-    className="border-line bg-surface mb-8 h-[228px] list-none overflow-y-auto border p-2.5"
+    className="mb-8 h-57 list-none overflow-y-auto border border-line bg-surface p-2.5"
     role="listbox"
     aria-label="Items"
     aria-multiselectable="true"

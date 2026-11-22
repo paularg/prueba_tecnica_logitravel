@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <>
-      <main className="rounded-card shadow-card w-full bg-white p-6 sm:p-12">
+      <main className="w-full rounded-card bg-white p-6 shadow-card sm:p-12">
         <Header />
 
         <ItemList

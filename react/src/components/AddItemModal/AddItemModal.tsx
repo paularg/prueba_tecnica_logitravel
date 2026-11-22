@@ -40,7 +40,7 @@ const AddItemModal = ({ isOpen, onAdd, onClose }: AddItemModalProps) => {
   return (
     <dialog
       ref={dialogRef}
-      className="rounded-card text-ink shadow-card m-auto w-[calc(100%-48px)] max-w-[680px] p-6 backdrop:bg-black/12 sm:p-12"
+      className="m-auto w-[calc(100%-48px)] max-w-modal rounded-card p-6 text-ink shadow-card backdrop:bg-black/12 sm:p-12"
       onClose={handleClose}
     >
       <form onSubmit={handleSubmit}>
@@ -51,7 +51,7 @@ const AddItemModal = ({ isOpen, onAdd, onClose }: AddItemModalProps) => {
           Add item to list
         </label>
         <input
-          className="border-line bg-surface text-ink placeholder:text-muted focus:outline-primary mb-6 h-[58px] w-full border px-5 text-lg focus:outline-2 focus:-outline-offset-1"
+          className="mb-6 h-14.5 w-full border border-line bg-surface px-5 text-lg text-ink placeholder:text-muted focus:outline-2 focus:-outline-offset-1 focus:outline-primary"
           id="item-input"
           type="text"
           placeholder="Type the text here..."

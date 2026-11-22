@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-/* ---------- Design tokens ---------- */
-/* Each token generates its utilities: bg-primary, text-ink, border-line, rounded-card... */
 @theme {
   --color-primary: #324bff;
   --color-ink: #333333;
@@ -14,15 +12,17 @@
   --font-sans: 'Montserrat', sans-serif;
   --radius-card: 20px;
   --shadow-card: 0 4px 16px rgb(0 0 0 / 0.08);
+
+  --container-card: 900px;
+  --container-modal: 680px;
 }
 
-/* ---------- Base ---------- */
 @layer base {
   body {
-    @apply from-gradient-from to-gradient-to text-ink grid min-h-screen place-items-center bg-linear-135 p-6;
+    @apply grid min-h-screen place-items-center bg-linear-135 from-gradient-from to-gradient-to p-6 text-ink;
   }
 
   #root {
-    @apply w-full max-w-[900px];
+    @apply w-full max-w-card;
   }
 }
