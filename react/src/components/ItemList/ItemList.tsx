@@ -4,9 +4,6 @@ import type { Item } from '../../types';
 // Components
 import ListItem from '../ListItem/ListItem';
 
-// Styles
-import styles from './ItemList.module.css';
-
 type ItemListProps = {
   items: Item[];
   selected: string[];
@@ -16,7 +13,7 @@ type ItemListProps = {
 
 const ItemList = ({ items, selected, onToggle, onDelete }: ItemListProps) => (
   <ul
-    className={styles.list}
+    className="border-line bg-surface mb-8 h-[228px] list-none overflow-y-auto border p-2.5"
     role="listbox"
     aria-label="Items"
     aria-multiselectable="true"

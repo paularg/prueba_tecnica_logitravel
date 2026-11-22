@@ -1,6 +1,6 @@
 # Technical Proof · React
 
-React + TypeScript version of the front-end technical test, built with [Vite](https://vite.dev).
+React + TypeScript version of the front-end technical test, built with [Vite](https://vite.dev) and styled with [Tailwind CSS](https://tailwindcss.com).
 
 ## Getting started
 
@@ -36,7 +36,7 @@ src/
 ├── App.tsx              # Owns the state and connects the components
 ├── listReducer.ts       # State logic (add, toggle, delete, undo)
 ├── types.ts             # Domain types: Item, State, Action
-├── index.css            # Design tokens and base styles
+├── index.css            # Tailwind import, design tokens (@theme) and base styles
 └── components/
     ├── AddItemModal/    # Modal with the form to add an item
     ├── Button/          # Reusable button (primary / outline / icon)
@@ -54,5 +54,5 @@ src/
 - **Typed actions.** `Action` is a discriminated union, so TypeScript reports any action the reducer does not handle.
 - **Native `<dialog>`.** Provides the backdrop, focus management and `Esc` to close without extra libraries.
 - **Container / presentational components.** Only `App` knows about the reducer; the other components receive data and callbacks through props.
-- **CSS Modules.** Each component has its own scoped styles; global styles are limited to design tokens and base rules.
+- **Tailwind CSS.** Styles live next to the markup as utility classes. The design tokens from the mockup (colors, font, radius, shadow) are defined once in `@theme`, which generates utilities such as `bg-primary` or `rounded-card`. States like the selected item or the modal backdrop use the `aria-selected:` and `backdrop:` variants, so no custom CSS is needed. Class order is kept consistent with `prettier-plugin-tailwindcss`.
 - **Accessibility.** The list uses `role="listbox"` / `role="option"` with `aria-selected`, and the icon button has an `aria-label`.

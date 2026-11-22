@@ -1,9 +1,6 @@
 // React
 import type { KeyboardEvent } from 'react';
 
-// Styles
-import styles from './ListItem.module.css';
-
 type ListItemProps = {
   text: string;
   isSelected: boolean;
@@ -22,7 +19,7 @@ const ListItem = ({ text, isSelected, onToggle, onDelete }: ListItemProps) => {
 
   return (
     <li
-      className={styles.item}
+      className="aria-selected:bg-primary cursor-pointer px-3.5 py-2.5 text-base leading-[normal] font-medium select-none aria-selected:text-white"
       role="option"
       tabIndex={0}
       aria-selected={isSelected}

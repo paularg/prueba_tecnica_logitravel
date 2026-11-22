@@ -2,9 +2,6 @@
 import Button from '../Button/Button';
 import UndoIcon from '../UndoIcon/UndoIcon';
 
-// Styles
-import styles from './ListActions.module.css';
-
 type ListActionsProps = {
   canUndo: boolean;
   canDelete: boolean;
@@ -20,8 +17,8 @@ const ListActions = ({
   onDelete,
   onAdd,
 }: ListActionsProps) => (
-  <div className={styles.actions}>
-    <div className={styles.group}>
+  <div className="flex items-center justify-between gap-4">
+    <div className="flex gap-4">
       <Button
         variant="outline"
         isIcon

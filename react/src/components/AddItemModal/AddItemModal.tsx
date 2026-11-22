@@ -4,9 +4,6 @@ import { useEffect, useRef, useState, type SubmitEvent } from 'react';
 // Components
 import Button from '../Button/Button';
 
-// Styles
-import styles from './AddItemModal.module.css';
-
 type AddItemModalProps = {
   isOpen: boolean;
   onAdd: (text: string) => void;
@@ -41,13 +38,20 @@ const AddItemModal = ({ isOpen, onAdd, onClose }: AddItemModalProps) => {
   };
 
   return (
-    <dialog ref={dialogRef} className={styles.modal} onClose={handleClose}>
+    <dialog
+      ref={dialogRef}
+      className="rounded-card text-ink shadow-card m-auto w-[calc(100%-48px)] max-w-[680px] p-6 backdrop:bg-black/12 sm:p-12"
+      onClose={handleClose}
+    >
       <form onSubmit={handleSubmit}>
-        <label className={styles.label} htmlFor="item-input">
+        <label
+          className="mb-5 block text-base leading-[normal] font-medium"
+          htmlFor="item-input"
+        >
           Add item to list
         </label>
         <input
-          className={styles.input}
+          className="border-line bg-surface text-ink placeholder:text-muted focus:outline-primary mb-6 h-[58px] w-full border px-5 text-lg focus:outline-2 focus:-outline-offset-1"
           id="item-input"
           type="text"
           placeholder="Type the text here..."
@@ -55,7 +59,7 @@ const AddItemModal = ({ isOpen, onAdd, onClose }: AddItemModalProps) => {
           value={text}
           onChange={(event) => setText(event.target.value)}
         />
-        <div className={styles.actions}>
+        <div className="flex justify-end gap-4">
           <Button type="submit" disabled={!text.trim()}>
             Add
           </Button>
