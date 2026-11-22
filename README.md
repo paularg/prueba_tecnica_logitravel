@@ -82,7 +82,8 @@ Shared decisions:
 ├── vanilla/
 │   ├── index.html
 │   ├── styles.css
-│   └── app.js
+│   ├── app.js
+│   └── favicon.svg
 └── react/
     ├── src/
     ├── package.json
