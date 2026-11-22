@@ -1,9 +1,6 @@
 // React
 import type { KeyboardEvent } from 'react';
 
-// Styles
-import styles from './ListItem.module.css';
-
 type ListItemProps = {
   text: string;
   isSelected: boolean;
@@ -12,7 +9,6 @@ type ListItemProps = {
 };
 
 const ListItem = ({ text, isSelected, onToggle, onDelete }: ListItemProps) => {
-  // Keyboard support: Enter or Space toggles the item
   const handleKeyDown = (event: KeyboardEvent<HTMLLIElement>) => {
     if (event.key !== 'Enter' && event.key !== ' ') return;
 
@@ -22,7 +18,7 @@ const ListItem = ({ text, isSelected, onToggle, onDelete }: ListItemProps) => {
 
   return (
     <li
-      className={styles.item}
+      className="cursor-pointer px-3.5 py-2.5 text-base leading-[normal] font-medium select-none aria-selected:bg-primary aria-selected:text-white"
       role="option"
       tabIndex={0}
       aria-selected={isSelected}

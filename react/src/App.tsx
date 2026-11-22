@@ -10,9 +10,6 @@ import ItemList from './components/ItemList/ItemList';
 import ListActions from './components/ListActions/ListActions';
 import AddItemModal from './components/AddItemModal/AddItemModal';
 
-// Styles
-import styles from './App.module.css';
-
 const App = () => {
   const [state, dispatch] = useReducer(listReducer, initialState);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +18,7 @@ const App = () => {
 
   return (
     <>
-      <main className={styles.card}>
+      <main className="w-full rounded-card bg-white p-6 shadow-card sm:p-12">
         <Header />
 
         <ItemList
