@@ -11,7 +11,7 @@
 
   --font-sans: 'Montserrat', sans-serif;
   --radius-card: 20px;
-  --shadow-card: 0 4px 16px rgb(0 0 0 / 0.08);
+  --shadow-card: 0 5px 12px rgb(0 0 0 / 0.12);
 
   --container-card: 900px;
   --container-modal: 680px;
