@@ -5,12 +5,12 @@
   --color-border: #cccccc;
   --color-surface: #f7f7f7;
   --color-white: #ffffff;
-  --gradient-bg: linear-gradient(135deg, #A1C4FD 0%, #C2E9FB 100%);
+  --gradient-bg: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
 
-  --font-family: "Montserrat", sans-serif;
+  --font-family: 'Montserrat', sans-serif;
   --radius-card: 20px;
   --radius-pill: 50px;
-  --shadow-card: 0px 5px 12px #0000001F;
+  --shadow-card: 0px 5px 12px #0000001f;
 }
 
 /* ---------- Base ---------- */
@@ -33,41 +33,32 @@ body {
 
 /* ---------- Card ---------- */
 .card {
-  height: 577px;
-  width: 900px;
-
+  width: 100%;
+  max-width: 900px;
+  padding: 50px;
   background: var(--color-white);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
 }
 
 .cardTitle {
-  width: 800px;
-  height: 49px;
-  margin: 50px 50px 13px;
-
+  margin: 0 0 13px;
   font-size: 40px;
   font-weight: 500;
   text-align: center;
-  letter-spacing: 0px;
-  color: var(--color-text);
 }
 
 .cardText {
-  width: 800px;
-  height: 74px;
-  margin: 0 50px 35px;
-
+  margin: 0 0 35px;
   font-size: 18px;
   line-height: 1.4;
   text-align: center;
-  letter-spacing: 0px;
 }
 
 /* ---------- List ---------- */
 .list {
   height: 228px;
-  margin: 30px 50px;
+  margin: 0 0 30px;
   padding: 10px;
   overflow-y: auto;
   list-style: none;
@@ -83,7 +74,7 @@ body {
   user-select: none;
 }
 
-.listItem[aria-selected="true"] {
+.listItem[aria-selected='true'] {
   background: var(--color-primary);
   color: var(--color-white);
 }
@@ -94,7 +85,6 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  margin: 0 50px 50px;
 }
 
 .actionsGroup {
@@ -114,7 +104,9 @@ body {
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: opacity 0.2s, background-color 0.2s;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
 }
 
 .btnPrimary {
@@ -197,7 +189,7 @@ body {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 600px) {
+@media (max-width: 639px) {
   .card,
   .modal {
     padding: 24px;

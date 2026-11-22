@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -40,8 +40,17 @@
             aria-label="Undo"
             disabled
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <path d="M3 12a9 9 0 1 0 3-6.7" />
               <polyline points="3 3 3 9 9 9" />
             </svg>
@@ -50,12 +59,14 @@
             Delete
           </button>
         </div>
-        <button id="open-modal-btn" type="button" class="btn btnPrimary">Add</button>
+        <button id="open-modal-btn" type="button" class="btn btnPrimary">
+          Add
+        </button>
       </div>
     </main>
 
     <dialog id="modal" class="modal">
-      <form id="item-form" class="modalForm" method="dialog">
+      <form id="item-form" method="dialog">
         <label class="modalLabel" for="item-input">Add item to list</label>
         <input
           class="modalInput"
@@ -66,7 +77,9 @@
         />
         <div class="modalActions">
           <button type="submit" class="btn btnPrimary">Add</button>
-          <button id="cancel-btn" type="button" class="btn btnOutline">Cancel</button>
+          <button id="cancel-btn" type="button" class="btn btnOutline">
+            Cancel
+          </button>
         </div>
       </form>
     </dialog>
