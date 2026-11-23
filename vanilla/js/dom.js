@@ -1,0 +1,10 @@
+// ---------- DOM ELEMENTS ----------
+export const list = document.getElementById('list');
+export const undoBtn = document.getElementById('undo-btn');
+export const deleteBtn = document.getElementById('delete-btn');
+export const openModalBtn = document.getElementById('open-modal-btn');
+export const modal = document.getElementById('modal');
+export const form = document.getElementById('item-form');
+export const input = document.getElementById('item-input');
+export const cancelBtn = document.getElementById('cancel-btn');
+export const submitBtn = form.querySelector('button[type="submit"]');

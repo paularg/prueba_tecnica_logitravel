@@ -30,7 +30,7 @@ Also included:
 
 ### Vanilla JS
 
-No installation needed. Open `vanilla/index.html` in the browser, or serve the folder with live reload:
+No installation or build step needed. The code uses native ES modules, which browsers do not load from `file://`, so serve the folder with any static server. From the repository root:
 
 ```bash
 npx live-server vanilla
@@ -60,14 +60,15 @@ state = {
 
 Every change to the list saves a copy of the current items in `history` first, so Undo only has to restore the last snapshot.
 
-| Concept     | Vanilla JS                                                      | React                                     |
-| ----------- | --------------------------------------------------------------- | ----------------------------------------- |
-| State       | A plain `state` object                                          | `useReducer` with typed actions           |
-| Changes     | `addItem`, `toggleItemSelection`, `deleteSelectedItems`, `undo` | `ADD`, `TOGGLE`, `DELETE`, `UNDO` actions |
-| Rendering   | `render()` rebuilds the list from the state                     | React re-renders the components           |
-| Item events | One delegated listener on the `<ul>`                            | Handlers on each `ListItem`               |
-| Styles      | Plain CSS with custom properties                                | Tailwind CSS with the tokens in `@theme`  |
-| Tests       | —                                                               | Unit tests for the reducer with Vitest    |
+| Concept           | Vanilla JS                                                      | React                                     |
+| ----------------- | --------------------------------------------------------------- | ----------------------------------------- |
+| State             | A plain `state` object                                          | `useReducer` with typed actions           |
+| Changes           | `addItem`, `toggleItemSelection`, `deleteSelectedItems`, `undo` | `ADD`, `TOGGLE`, `DELETE`, `UNDO` actions |
+| Code organization | ES modules split by responsibility (`js/`)                      | Components, reducer and types             |
+| Rendering         | `render()` rebuilds the list from the state                     | React re-renders the components           |
+| Item events       | One delegated listener on the `<ul>`                            | Handlers on each `ListItem`               |
+| Styles            | Plain CSS with custom properties                                | Tailwind CSS with the tokens in `@theme`  |
+| Tests             | —                                                               | Unit tests for the reducer with Vitest    |
 
 Shared decisions:
 
@@ -82,8 +83,15 @@ Shared decisions:
 ├── vanilla/
 │   ├── index.html
 │   ├── styles.css
-│   ├── app.js
-│   └── favicon.svg
+│   ├── app.js           # Entry point: binds the events and renders
+│   ├── favicon.svg
+│   └── js/
+│       ├── state.js     # State object and id generator
+│       ├── dom.js       # DOM element references
+│       ├── actions.js   # The only functions that change the state
+│       ├── render.js    # Renders the UI from the state
+│       ├── modal.js     # Opens and closes the modal
+│       └── events.js    # Event listeners (delegated on the list)
 └── react/
     ├── src/
     ├── package.json
